@@ -1,0 +1,14 @@
+{
+	"name": "beyondchats-blogs-automation",
+	"version": "1.0.0",
+	"private": true,
+	"type": "commonjs",
+	"scripts": {
+		"pipeline": "node ./automation/runPipeline.js"
+	},
+	"dependencies": {
+		"axios": "^1.7.9",
+		"cheerio": "^1.0.0",
+		"dotenv": "^16.6.1"
+	}
+}
