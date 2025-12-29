@@ -123,6 +123,10 @@ Data model (conceptual):
 
 ## How to run locally
 
+## Live demo
+
+- Frontend: https://ai-blog-enhancer-zcpa.vercel.app/
+
 ### Prerequisites
 
 - Node.js 18+ recommended
