@@ -1,5 +1,6 @@
 import ArticlesList from './pages/ArticlesList';
 import ArticleDetail from './pages/ArticleDetail';
+import { usePathname } from './navigation';
 
 function getArticleIdFromPathname(pathname) {
 	const path = String(pathname || '');
@@ -8,7 +9,7 @@ function getArticleIdFromPathname(pathname) {
 }
 
 export default function App() {
-	const pathname = typeof window !== 'undefined' ? window.location.pathname : '/';
+	const pathname = usePathname();
 	const articleId = getArticleIdFromPathname(pathname);
 
 	if (articleId) {

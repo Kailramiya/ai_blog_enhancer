@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 
 import { extractOldestBlogs, fetchAllArticles } from '../services/api';
+import { navigate } from '../navigation';
 
 const FOCUSED_IDS_STORAGE_KEY = 'beyondchats.focusedOriginalIds';
 
@@ -24,6 +25,14 @@ function ArticleCard({ article, badgeText, badgeUpdated, emptyText }) {
 		<a
 			href={`/articles/${encodeURIComponent(article._id)}`}
 			className="card card--link"
+			onClick={(e) => {
+				// Allow normal browser behaviors (open in new tab, etc.)
+				if (e.defaultPrevented) return;
+				if (e.button !== 0) return;
+				if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+				e.preventDefault();
+				navigate(`/articles/${encodeURIComponent(article._id)}`);
+			}}
 		>
 			<div className="card__top">
 				<h2 className="card__title">{article.title}</h2>

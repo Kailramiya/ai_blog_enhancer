@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 
 import { fetchAllArticles, fetchArticleById } from '../services/api';
+import { navigate } from '../navigation';
 
 function getIdString(value) {
 	if (!value) return '';
@@ -505,7 +506,17 @@ export default function ArticleDetail({ articleId }) {
 
 	return (
 		<div className="app-shell">
-			<a href="/" className="backlink">
+			<a
+				href="/"
+				className="backlink"
+				onClick={(e) => {
+					if (e.defaultPrevented) return;
+					if (e.button !== 0) return;
+					if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+					e.preventDefault();
+					navigate('/');
+				}}
+			>
 				← Back
 			</a>
 
